@@ -1,0 +1,103 @@
+%version1.0
+%06/01/2018
+
+function x1=ldrMatrix(a,SL)
+
+count=0;
+x1=zeros(1,SL);%zeros matrix
+
+for i=2:9
+    pinMode(a,i,'OUTPUT')
+end
+
+for i=1:SL
+t=0;    
+    while count~=SL && t==3
+        t=t-1;
+        y1=analogRead(a,0);
+        y2=analogRead(a,1);
+        y3=analogRead(a,2);
+        y4=analogRead(a,3);
+        y5=analogRead(a,4);
+        y6=analogRead(a,5);
+        y7=analogRead(a,6);
+        y8=analogRead(a,7);
+
+        if y1>450
+            x1(1,i)=2;%assigning pin numbers
+            digitalWrite(a,2,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,2,0);
+            count=count+1;
+            break;
+        end
+        
+        if y2>450
+            x1(1,i)=3;%assigning pin numbers
+            digitalWrite(a,3,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,3,0);
+            count=count+1;
+            break;
+        end
+        
+        if y3>450
+            x1(1,i)=4;%assigning pin numbers
+            digitalWrite(a,4,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,4,0);
+            count=count+1;
+            break;
+        end
+        
+        if y4>450
+            x1(1,i)=5;%assigning pin numbers
+            digitalWrite(a,5,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,5,0);
+            count=count+1;
+            break;
+        end
+        
+         if y5>600
+            x1(1,i)=6;%assigning pin numbers
+            digitalWrite(a,6,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,6,0);
+            count=count+1;
+            break;
+         end
+        
+         if y6>750
+            x1(1,i)=7;%assigning pin numbers
+            digitalWrite(a,7,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,7,0);
+            count=count+1;
+            break;
+         end
+        
+          if y7>750
+            x1(1,i)=8;%assigning pin numbers
+            digitalWrite(a,8,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,8,0);
+            count=count+1;
+            break;
+          end
+         
+          if y8>750
+            x1(1,i)=9;%assigning pin numbers
+            digitalWrite(a,9,1);%corresponding LED blink
+            pause(0.4);
+            digitalWrite(a,9,0);
+            count=count+1;
+            break;
+          end
+    end
+    pause(0.5);
+    
+end
+%disp(x1);
+
+return
